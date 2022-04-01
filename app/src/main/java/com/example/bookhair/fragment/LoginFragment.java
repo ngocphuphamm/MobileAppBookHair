@@ -1,14 +1,39 @@
 package com.example.bookhair.fragment;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.bookhair.API;
+import com.example.bookhair.DashboardActivity;
+import com.example.bookhair.LoginActivity;
 import com.example.bookhair.R;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.StringReader;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +41,10 @@ import com.example.bookhair.R;
  * create an instance of this fragment.
  */
 public class LoginFragment extends Fragment {
+    private View view;
+    private Button btn_Signin;
+    private ProgressDialog dialog;
+    private EditText txtEmail, txtPassword;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +90,75 @@ public class LoginFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false);
+        view =inflater.inflate(R.layout.fragment_login, container,false);
+        init();
+        return view;
+
     }
+    private void init() {
+        txtEmail  =  view.findViewById(R.id.email);
+        txtPassword = view.findViewById(R.id.pass);
+        dialog = new ProgressDialog(getContext());
+        dialog.setCancelable(false);
+        btn_Signin = view.findViewById(R.id.btn_login);
+
+        btn_Signin.setOnClickListener(v->{
+            login();
+        });
+    }
+
+    private void login(){
+        dialog.setMessage("Đang kiểm tra...");
+        dialog.show();
+        dialog.setMessage("Đang kiểm tra...");
+        dialog.show();
+        StringRequest request = new StringRequest(Request.Method.POST, API.LOGIN, response -> {
+            //get response if connection success
+            try {
+                JSONObject object = new JSONObject(response);
+                if (object.getBoolean("success")){
+                    JSONObject user = object.getJSONObject("user");
+                    // make share preference user
+                    SharedPreferences userPref = getActivity().getApplicationContext().getSharedPreferences("user",getContext().MODE_PRIVATE);
+                    SharedPreferences.Editor editor = userPref.edit();
+                    editor.putString("token", object.getString("token"));
+                    editor.putString("name", user.getString("name"));
+                    editor.putString("lastname", user.getString("lastname"));
+                    editor.putString("photo", user.getString("photo"));
+                    editor.putString("phone", user.getString("phone"));
+                    editor.putString("address", user.getString("address"));
+                    editor.putBoolean("isLoggedIn", true);
+                    editor.apply();
+                    // if Success
+                    startActivity(new Intent((LoginActivity)getContext(), DashboardActivity.class));
+                    ((LoginActivity) getContext()).finish();
+                    Toast.makeText(getContext(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(getContext(), "Tài khoản hoặc mật khẩu sai", Toast.LENGTH_SHORT).show();
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            dialog.dismiss();
+        }, error -> {
+            // error if connection not success
+            error.printStackTrace();
+            dialog.dismiss();
+        })
+        {
+            // add parameters
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("email", txtEmail.getText().toString().trim());
+                map.put("password", txtPassword.getText().toString());
+                return map;
+            }
+        };
+        // add request to RequestQueue
+        RequestQueue queue = Volley.newRequestQueue(getContext());
+        queue.add(request);
+    }
+
 }

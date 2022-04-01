@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="MyThemeOverlay">
+        <item name="android:colorAccent">#1294F2</item>
+    </style>
+</resources>

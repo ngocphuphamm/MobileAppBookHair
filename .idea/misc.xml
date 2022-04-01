@@ -4,7 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/ngocp/AndroidStudioProjects/BookHair/app/src/main/res/drawable/border_green.xml" value="0.19166666666666668" />
+        <entry key="..\:/Users/ngocp/AndroidStudioProjects/BookHair/app/src/main/res/drawable/selector.xml" value="0.1" />
+        <entry key="..\:/Users/ngocp/AndroidStudioProjects/BookHair/app/src/main/res/font/antic.xml" value="0.10729166666666666" />
+        <entry key="..\:/Users/ngocp/AndroidStudioProjects/BookHair/app/src/main/res/layout/activity_dashboard.xml" value="0.10144927536231885" />
+        <entry key="..\:/Users/ngocp/AndroidStudioProjects/BookHair/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Users/ngocp/AndroidStudioProjects/BookHair/app/src/main/res/layout/activity_main.xml" value="0.10144927536231885" />
+        <entry key="..\:/Users/ngocp/AndroidStudioProjects/BookHair/app/src/main/res/layout/activity_on_board.xml" value="0.22" />
         <entry key="..\:/Users/ngocp/AndroidStudioProjects/BookHair/app/src/main/res/menu/menu.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/ngocp/AndroidStudioProjects/BookHair/app/src/main/res/menu/menu_timkiem.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/ngocp/AndroidStudioProjects/BookHair/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.19166666666666668" />

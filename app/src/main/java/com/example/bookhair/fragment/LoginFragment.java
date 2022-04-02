@@ -110,8 +110,7 @@ public class LoginFragment extends Fragment {
     private void login(){
         dialog.setMessage("Đang kiểm tra...");
         dialog.show();
-        dialog.setMessage("Đang kiểm tra...");
-        dialog.show();
+
         StringRequest request = new StringRequest(Request.Method.POST, API.LOGIN, response -> {
             //get response if connection success
             try {

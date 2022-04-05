@@ -1,8 +1,10 @@
 package com.example.bookhair.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager2.widget.CompositePageTransformer;
@@ -24,6 +26,8 @@ import com.example.bookhair.Class.Salon;
 import com.example.bookhair.Class.SalonhelperFeature;
 import com.example.bookhair.R;
 import com.example.bookhair.adapter.SalonAdapter;
+import com.example.bookhair.adapter.noibatDichvuAdapter;
+import com.example.bookhair.adapter.noibatSalonAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,15 +41,14 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class HomeFragment extends Fragment {
-    private LinearLayout lnbando, lntimkiem;
-    private RecyclerView noibatRecycler, dvnoibatRecycler;
+    private LinearLayout  lnbando, lntimkiem;
+    private  RecyclerView noibatRecycler, dvnoibatRecycler;
     private  RecyclerView.Adapter adapter;
     private ArrayList<Salon> salons;
     ArrayList<Dichvu> dichvus;
     ArrayList<SalonhelperFeature> noibatSalons;
     private SwipeRefreshLayout swipeRefreshLayout;
     private View view;
-
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -95,17 +98,115 @@ public class HomeFragment extends Fragment {
         lntimkiem = (LinearLayout) view.findViewById(R.id.lnloc);
         lnbando = (LinearLayout) view.findViewById(R.id.lnbando);
         swipeRefreshLayout = view.findViewById(R.id.refeshHome);
-
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 setupSalonsViewPager();
-//                noibatRecycler();
-//                dvNoibatRecycler();
+                noibatRecycler();
+                dvNoibatRecycler();
+            }
+        });
+        lnbando.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+//                Intent intent = new Intent(getContext(), GoogleMap.class);
+//                startActivity(intent);
+            }
+        });
+        lntimkiem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Intent intent = new Intent(getContext(), TimKiemActivity.class);
+//                startActivity(intent);
             }
         });
         setupSalonsViewPager();
+        noibatRecycler =  view.findViewById(R.id.recycleNoibat);
+        noibatRecycler();
+        dvnoibatRecycler = view.findViewById(R.id.recycleDvNoiBat);
+        dvNoibatRecycler();
         return view;
+    }
+    private void noibatRecycler() {
+        noibatRecycler.setHasFixedSize(true);
+        noibatRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        noibatSalons = new ArrayList<>();
+        swipeRefreshLayout.setRefreshing(true);
+        StringRequest request = new StringRequest(Request.Method.GET, API.GET_SALON_FEATURE, response -> {
+
+            try {
+                JSONObject object = new JSONObject(response);
+                if (object.getBoolean("success")){
+                    JSONArray array = new JSONArray(object.getString("salon"));
+                    for (int i = 0; i< array.length(); i++){
+                        JSONObject salonObject = array.getJSONObject(i);
+                        SalonhelperFeature salon = new SalonhelperFeature();
+                        salon.setId_salon(salonObject.getInt("id"));
+                        salon.setTitle(salonObject.getString("tenSalon"));
+                        salon.setAddress(salonObject.getString("diaChi"));
+                        salon.setImage(salonObject.getString("hinhAnh"));
+
+                        noibatSalons.add(salon);
+
+                    }
+                    noibatRecycler.setAdapter(new noibatSalonAdapter(getContext(), noibatSalons));
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            swipeRefreshLayout.setRefreshing(false);
+        }, error -> {
+            error.printStackTrace();
+            swipeRefreshLayout.setRefreshing(false);
+        }){
+
+        };
+
+        RequestQueue queue = Volley.newRequestQueue(getContext());
+        queue.add(request);
+
+
+    }
+    private void dvNoibatRecycler() {
+        dvnoibatRecycler.setHasFixedSize(true);
+        dvnoibatRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        dichvus = new ArrayList<>();
+        swipeRefreshLayout.setRefreshing(true);
+        StringRequest request = new StringRequest(Request.Method.GET, API.GET_DICHVU, response -> {
+
+            try {
+                JSONObject object = new JSONObject(response);
+                if (object.getBoolean("success")){
+                    JSONArray array = new JSONArray(object.getString("dichvu"));
+                    for (int i = 0; i< array.length(); i++){
+                        JSONObject dichvuObject = array.getJSONObject(i);
+                        Dichvu dichvu = new Dichvu();
+                        dichvu.setId_dichvu(dichvuObject.getInt("id"));
+                        dichvu.setTendv(dichvuObject.getString("tenDichvu"));
+                        dichvu.setGia(dichvuObject.getString("giaTien"));
+                        dichvu.setImage(dichvuObject.getString("hinhanh"));
+                        dichvu.setTensalon(dichvuObject.getString("tenSalon"));
+                        dichvus.add(dichvu);
+
+                    }
+                    dvnoibatRecycler.setAdapter(new noibatDichvuAdapter(getContext(), dichvus));
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            swipeRefreshLayout.setRefreshing(false);
+        }, error -> {
+            error.printStackTrace();
+            swipeRefreshLayout.setRefreshing(false);
+        }){
+
+        };
+
+        RequestQueue queue = Volley.newRequestQueue(getContext());
+        queue.add(request);
+
+//        Drawable gradient1 = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, new int[]{0xffeff400, 0xffaff600});
     }
 
     private void setupSalonsViewPager(){

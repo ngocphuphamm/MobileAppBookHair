@@ -1,9 +1,274 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ShowDetailSalonActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/image_bgr_detail"
+        android:layout_width="match_parent"
+        android:layout_height="290dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background_login" />
+
+    <ImageButton
+        android:layout_marginTop="10dp"
+        android:id="@+id/btn_home"
+        android:layout_width="wrap_content"
+        android:background="@color/blue_main"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_arrow_back_24" />
+    <RelativeLayout
+        android:id="@+id/relative_chitietSalon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/radius_back"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        >
+
+        <LinearLayout
+            android:id="@+id/linear_image_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/image_detail_salon"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/image30shine"
+                app:riv_corner_radius="8dp" />
+
+            <TextView
+                android:id="@+id/ten_detail_salon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/antic"
+                android:text="30Shine"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_thanhlap_nv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linear_image_name"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            >
+
+            <LinearLayout
+
+                android:layout_width="95dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="23dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/border_right"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/labelThanhlap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Thành lập"
+                    android:paddingRight="5dp"
+                    />
+
+
+                <TextView
+                    android:id="@+id/txtSoNam"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="5dp"
+                    android:text="5 Năm" />
+            </LinearLayout>
+            <LinearLayout
+
+                android:layout_width="95dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="23dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/border_right"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/labelNhanVien"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nhân Viên"
+                    android:paddingRight="5dp"
+                    />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="5dp"
+                    android:text="5 Người" />
+            </LinearLayout>
+            <LinearLayout
+
+                android:layout_width="95dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="23dp"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/labelChongoi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Số chỗ ngồi"
+                    android:paddingRight="5dp"
+                    />
+
+
+                <TextView
+                    android:id="@+id/txtSoCho"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="5dp"
+                    android:text="20 chỗ" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/linear_thanhlap_nv">
+            <Button
+                android:id="@+id/btn_datlich"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:text="Đặt lịch"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:background="@drawable/bgr_button_datlich"
+                />
+            <ImageButton
+                android:id="@+id/btn_yeuthich"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="1dp"
+                android:src="@drawable/ic_baseline_favorite_24"
+                android:background="@drawable/bgr_button_favourite"
+                android:layout_marginLeft="5dp"
+                />
+        </LinearLayout>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/relative_chitietSalon"
+        android:layout_marginTop="30dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/linaer_diachi">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Địa chỉ"
+                android:layout_marginLeft="20dp"
+                android:textColor="#696969"
+                android:fontFamily="@font/antic"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtDiachi"
+                android:text="40 Cao thắng, Hải Châu, Đà Nẵng"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/black"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/linaer_tensalon"
+            android:layout_marginTop="40dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tiệm cắt tóc"
+                android:layout_marginLeft="20dp"
+                android:textColor="#696969"
+                android:fontFamily="@font/antic"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtTensalon"
+                android:text="30Shine"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/black"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/linaer_chutiem"
+            android:layout_marginTop="40dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chủ tiệm"
+                android:layout_marginLeft="20dp"
+                android:textColor="#696969"
+                android:fontFamily="@font/antic"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtTenChutiem"
+                android:text="Nguyễn Minh Hiếu"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/black"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/linaer_gioithieu"
+            android:layout_marginTop="40dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Giới thiệu"
+                android:layout_marginLeft="20dp"
+                android:textColor="#696969"
+                android:fontFamily="@font/antic"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtGioithieu"
+                android:text="Muốn đẹp trai phải tới 30Shine :D"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/black"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

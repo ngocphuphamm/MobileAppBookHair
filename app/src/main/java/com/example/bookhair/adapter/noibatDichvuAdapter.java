@@ -50,8 +50,9 @@ public class noibatDichvuAdapter extends RecyclerView.Adapter<noibatDichvuAdapte
         DecimalFormat formatter = new DecimalFormat("###,###,###");
         Double so = Double.parseDouble(dichvu.getGia());
         String moneyString = formatter.format(so);
-        holder.gia.setText(moneyString+" đ");
-        holder.gia.setText(dichvu.getGia());
+        /// CHƯA XÁC ĐINH
+        holder.gia.setText(moneyString+"VND");
+        holder.gia.setText(dichvu.getGia() + "VND");
         holder.tenSalon.setText(dichvu.getTensalon());
         holder.dvnoibatrelative.setOnClickListener(new View.OnClickListener() {
             @Override

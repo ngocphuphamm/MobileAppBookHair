@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bookhair.API;
 import com.example.bookhair.Class.SalonhelperFeature;
+import com.example.bookhair.Class.User;
 import com.example.bookhair.R;
 import com.example.bookhair.ShowDetailSalonActivity;
 import com.makeramen.roundedimageview.RoundedImageView;
@@ -39,6 +40,7 @@ public class noibatSalonAdapter extends RecyclerView.Adapter<noibatSalonAdapter.
     @Override
     public void onBindViewHolder(@NonNull noibatViewHolder holder, int position) {
         SalonhelperFeature salonhelperClasss = noibatSalons.get(position);
+
         Picasso.get().load(API.URL+"/storage/salon/"+salonhelperClasss.getImage()).into(holder.image);
         holder.title.setText(salonhelperClasss.getTitle());
         holder.address.setText(salonhelperClasss.getAddress());
@@ -47,6 +49,7 @@ public class noibatSalonAdapter extends RecyclerView.Adapter<noibatSalonAdapter.
             public void onClick(View view) {
                 Intent intent = new Intent(holder.itemView.getContext(), ShowDetailSalonActivity.class);
                 intent.putExtra("salonId", salonhelperClasss.getId_salon());
+
                 holder.itemView.getContext().startActivity(intent);
             }
         });

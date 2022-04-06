@@ -24,6 +24,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.bookhair.API;
+import com.example.bookhair.Class.User;
 import com.example.bookhair.DashboardActivity;
 import com.example.bookhair.LoginActivity;
 import com.example.bookhair.R;
@@ -120,6 +121,8 @@ public class LoginFragment extends Fragment {
                     // make share preference user
                     SharedPreferences userPref = getActivity().getApplicationContext().getSharedPreferences("user",getContext().MODE_PRIVATE);
                     SharedPreferences.Editor editor = userPref.edit();
+
+                    editor.putString("userId",object.getString("userId"));
                     editor.putString("token", object.getString("token"));
                     editor.putString("name", user.getString("name"));
                     editor.putString("lastname", user.getString("lastname"));

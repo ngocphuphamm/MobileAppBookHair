@@ -4,23 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/radius_back"
-    tools:context=".DatLichActivity">
+    tools:context=".activity.DatLichDVActivity">
 
     <CalendarView
-        android:id="@+id/calendar"
+        android:id="@+id/calendarCTDV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:background="@drawable/radius_back"
-        />
+        android:background="@drawable/radius_back" />
 
     <LinearLayout
         android:id="@+id/linearChonTG"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/calendar"
+        android:layout_below="@+id/calendarCTDV"
         android:layout_marginTop="20dp"
         android:orientation="vertical">
 
@@ -37,11 +35,11 @@
         <HorizontalScrollView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:scrollbars="none"
-            android:layout_marginLeft="40dp">
+            android:layout_marginLeft="40dp"
+            android:scrollbars="none">
 
             <RadioGroup
-                android:id="@+id/radioGrTime"
+                android:id="@+id/radioGrTimeCTDV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -169,66 +167,16 @@
         </HorizontalScrollView>
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linearChonDV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linearChonTG"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:fontFamily="@font/leckerlione_regular"
-            android:text="Chọn dịch vụ"
-            android:textColor="@color/blue_main"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <Spinner
-            android:id="@+id/spinnerDV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="55dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="40dp" />
-
-    </LinearLayout>
-
-
-    <TextView
-        android:id="@+id/textViewHidden"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linearChonDV"
-        android:layout_marginTop="20dp"
-        android:text="" />
-
-    <TextView
-        android:id="@+id/textHiddenTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewHidden"
-        android:text="" />
-    <TextView
-        android:id="@+id/textHiddenDV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textHiddenTime"
-        android:text="" />
-
 
     <Button
-        android:id="@+id/btn_tieptuc"
+        android:id="@+id/btn_tieptucCTDV"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/linearChonTG"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/button_bg"
         android:text="Tiếp tục"
         android:textColor="@color/white" />
-
 </RelativeLayout>

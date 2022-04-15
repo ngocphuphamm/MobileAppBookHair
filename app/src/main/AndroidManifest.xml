@@ -23,6 +23,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".DatLichDVActivity"
+            android:exported="true" />
+        <activity
+            android:name=".XacNhanActivity"
+            android:exported="true" />
+        <activity
             android:name=".DatLichActivity"
             android:exported="true" />
         <activity

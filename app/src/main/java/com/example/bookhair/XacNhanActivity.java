@@ -96,17 +96,25 @@ public class XacNhanActivity extends AppCompatActivity {
                         JSONObject salonobject = lichhenobject.getJSONObject("salon");
 
                         SalonNoti salonNoti = new SalonNoti();
-                        salonNoti.setId_lichhen(lichhenobject.getInt("id"));
+                        salonNoti.setId_lichhen(lichhenobject.getString("id"));
                         salonNoti.setTrangThai(lichhenobject.getString("status"));
                         salonNoti.setThoiGian(lichhenobject.getString("ngayHen"));
                         salonNoti.setHinhAnh(salonobject.getString("hinhAnh"));
                         salonNoti.setNhanVienCatToc(nhanvienobject.getString("hoTen"));
                         salonNoti.setTenSalon(salonobject.getString("tenSalon"));
 
-//
 //                         SapToiFragment.arraySalonNoti.add(0, salonNoti);
 //                        SapToiFragment.lvThongBaoSapToi.getAdapter().notifyItemInserted(0);
 //                        SapToiFragment.lvThongBaoSapToi.getAdapter().notifyDataSetChanged();
+                        Toast.makeText(this, "Đặt lịch thành thông", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(XacNhanActivity.this, DashboardActivity.class);
+                        intent.putExtra("message", 2);
+                        startActivity(intent);
+
+                    }
+                    else
+                    {
+                        Toast.makeText(this, "Đã có lỗi xảy ra ", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -143,10 +151,6 @@ public class XacNhanActivity extends AppCompatActivity {
             };
             RequestQueue queue = Volley.newRequestQueue(this);
             queue.add(request);
-            Toast.makeText(this, "Đặt lịch thành thông", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(XacNhanActivity.this, DashboardActivity.class);
-            intent.putExtra("message", 2);
-            startActivity(intent);
 
 
         });

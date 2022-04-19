@@ -1,7 +1,7 @@
 package com.example.bookhair.Class;
 
 public class SalonNoti {
-    private int id_lichhen, id_salon;
+    private int  id_salon;
     private String hinhAnh;
     private String nhanVienCatToc;
     private String tenSalon;
@@ -12,6 +12,7 @@ public class SalonNoti {
     private String thoiGianDuKienDichVu;
     private String chuTiem;
     private String trangThai;
+    private String id_lichhen;
 
     public int getId_salon() {
         return id_salon;
@@ -29,11 +30,11 @@ public class SalonNoti {
         this.chuTiem = chuTiem;
     }
 
-    public int getId_lichhen() {
+    public String getId_lichhen() {
         return id_lichhen;
     }
 
-    public void setId_lichhen(int id_lichhen) {
+    public void setId_lichhen(String id_lichhen) {
         this.id_lichhen = id_lichhen;
     }
 

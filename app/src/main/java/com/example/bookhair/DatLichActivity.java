@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -16,6 +17,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -58,7 +60,14 @@ public class DatLichActivity extends AppCompatActivity {
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
-                textViewHidden.setText( i + "-" +i2 + "-" + i1+1);
+                int month  = i1 + 1 ;
+
+
+
+
+                    textViewHidden.setText( i + "-" + month+ "-" + i2);
+
+
             }
         });
         radioGroupTime = findViewById(R.id.radioGrTime);
@@ -92,13 +101,27 @@ public class DatLichActivity extends AppCompatActivity {
         btnTieptuc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(DatLichActivity.this, XacNhanActivity.class);
-                intent.putExtra("gio", textViewTimeHidden.getText());
-                intent.putExtra("ngayDat", textViewHidden.getText());
-                intent.putExtra("dichvu", tenDV.getText());
-                intent.putExtra("id_dichvu", id_dichvu);
-                intent.putExtra("id_salon", id_salon);
-                startActivity(intent);
+                if(TextUtils.isEmpty(textViewHidden.getText().toString()))
+                {
+                    Toast.makeText(DatLichActivity.this,
+                            "Vui lòng khách hàng chọn ngày đặt lịch!",
+                            Toast.LENGTH_SHORT).show();
+                }
+                else if(TextUtils.isEmpty(textViewTimeHidden.getText().toString())){
+                    Toast.makeText(DatLichActivity.this,
+                            "Vui lòng khách hàng chọn thời gian đặt lịch",
+                            Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Intent intent = new Intent(DatLichActivity.this, XacNhanActivity.class);
+                    intent.putExtra("gio", textViewTimeHidden.getText());
+                    intent.putExtra("ngayDat", textViewHidden.getText());
+                    intent.putExtra("dichvu", tenDV.getText());
+                    intent.putExtra("id_dichvu", id_dichvu);
+                    intent.putExtra("id_salon", id_salon);
+                    startActivity(intent);
+                }
+
             }
         });
 

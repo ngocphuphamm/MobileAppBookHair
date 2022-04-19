@@ -38,7 +38,7 @@ public class DatLichDVActivity extends AppCompatActivity {
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
-                ngayHen =  i + "-" +i2 + "-" + i1+1;
+                ngayHen =  i + "-" +i1+1+ "-" + i2;
             }
         });
         radioGroupTime = findViewById(R.id.radioGrTimeCTDV);

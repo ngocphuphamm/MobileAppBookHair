@@ -1,7 +1,7 @@
 package com.example.bookhair;
 
 public class API {
-    public static final String URL= "http://172.16.61.231:4000";
+    public static final String URL= "http://192.168.1.11:4000";
     public static final String HOME = URL+ "/api";
     // finish
     public static final String LOGIN= HOME+"/login";

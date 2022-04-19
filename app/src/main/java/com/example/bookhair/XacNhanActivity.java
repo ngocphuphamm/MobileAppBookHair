@@ -120,7 +120,9 @@ public class XacNhanActivity extends AppCompatActivity {
                 @Override
                 public Map<String, String> getHeaders() throws AuthFailureError {
                     String token = userPref.getString("token", "");
+
                     HashMap<String,String> map = new HashMap<>();
+
                     map.put("Authorization", "Bearer "+token);
                     return map;
                 }
@@ -128,6 +130,8 @@ public class XacNhanActivity extends AppCompatActivity {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
                     HashMap<String,String> map = new HashMap<>();
+                    String user = userPref.getString("userId","");
+                    map.put("userId",user);
                     map.put("ngayHen", ngayHen);
                     map.put("id_Dichvu", id_dichvu+"");
                     map.put("id_Nhanvien", id_nhanvien+"");

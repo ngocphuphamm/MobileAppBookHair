@@ -12,9 +12,9 @@ public class API {
     public static final String GET_SALON_BY_ID= HOME+"/getSalonById";
     public static final String GET_DICHVU_BY_SALON= HOME+"/getDichVuBySalon";
 
-    // not finish
     // tam thoi xong
     public static final String GET_NHANVIEN_BY_SALON= HOME+"/getNhanVienBySalon";
+    // not finish
     // dat lich
     public static final String DAT_LICH= HOME+"/DatLich";
 }

@@ -33,11 +33,10 @@ import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link SapToiFragment#newInstance} factory method to
+ * Use the {@link LichSuFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SapToiFragment extends Fragment {
-
+public class LichSuFragment extends Fragment {
 
     public static ListView lvThongBaoSapToi;
     public static ArrayList<SalonNoti> arraySalonNoti;
@@ -53,7 +52,7 @@ public class SapToiFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public SapToiFragment() {
+    public LichSuFragment() {
         // Required empty public constructor
     }
 
@@ -89,17 +88,16 @@ public class SapToiFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_sap_toi, container, false);
+        View view = inflater.inflate(R.layout.fragment_lichsu, container, false);
 
 
 
-        return inflater.inflate(R.layout.fragment_sap_toi, container, false);
+        return inflater.inflate(R.layout.fragment_lichsu, container, false);
     }
 
     public void mapping(){
         arraySalonNoti = new ArrayList<>();
-        String user = userPref.getString("userId","");
-        StringRequest request = new StringRequest(Request.Method.GET, API.GET_LICHHEN_SAP_TOI+"/"+user, response -> {
+        StringRequest request = new StringRequest(Request.Method.GET, API.GET_LICHHEN_DA_DAT, response -> {
 
             try {
                 JSONObject object = new JSONObject(response);
@@ -130,27 +128,16 @@ public class SapToiFragment extends Fragment {
         }, error -> {
             error.printStackTrace();
         }){
-//            @Override
-//            public Map<String, String> getHeaders() throws AuthFailureError {
-//                String token = userPref.getString("token", "");
-//                HashMap<String,String> map = new HashMap<>();
-//                String user = userPref.getString("userId","");
-//                map.put("ngocphu","name");
-//                map.put("Authorization","Bearer "+token);
-//                map.put("userId",user);
-//                return map;
-//            }
-
-
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                HashMap<String, String> map = new HashMap<>();
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                String token = userPref.getString("token", "");
+                HashMap<String,String> map = new HashMap<>();
                 String user = userPref.getString("userId","");
+                map.put("Authorization","Bearer "+token);
                 map.put("userId",user);
                 return map;
             }
         };
-
 
         RequestQueue queue = Volley.newRequestQueue(getContext());
         queue.add(request);
@@ -162,10 +149,8 @@ public class SapToiFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         userPref = getContext().getSharedPreferences("user", Context.MODE_PRIVATE);
-        lvThongBaoSapToi = view.findViewById(R.id.lvThongBaoSapToi);
+        lvThongBaoSapToi = view.findViewById(R.id.lvLichSu);
         mapping();
 
     }
-
-
 }

@@ -3,12 +3,16 @@ package com.example.bookhair.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.bookhair.R;
+import com.example.bookhair.adapter.LichSuFragmentAdapter;
+import com.google.android.material.tabs.TabLayout;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,7 +20,10 @@ import com.example.bookhair.R;
  * create an instance of this fragment.
  */
 public class LichFragment extends Fragment {
-
+    private TabLayout tabLayout;
+    private ViewPager2 pager2;
+    private LichSuFragmentAdapter adapter;
+    private View view;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -61,6 +68,39 @@ public class LichFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_lich, container, false);
+        view = inflater.inflate(R.layout.fragment_lich, container, false);
+        tabLayout = view.findViewById(R.id.tab_layout);
+        pager2 = view.findViewById(R.id.view_page2);
+        FragmentManager fm = getActivity().getSupportFragmentManager();
+        adapter = new LichSuFragmentAdapter(fm, getLifecycle());
+        pager2.setAdapter(adapter);
+
+        tabLayout.addTab(tabLayout.newTab().setText("Chưa xác nhận"));
+        tabLayout.addTab(tabLayout.newTab().setText("Đã xác nhận"));
+        tabLayout.addTab(tabLayout.newTab().setText("Lịch sử"));
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                pager2.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+        pager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                tabLayout.selectTab(tabLayout.getTabAt(position));
+            }
+        });
+        return view;
     }
 }

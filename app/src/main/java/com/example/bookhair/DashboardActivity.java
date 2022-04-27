@@ -58,7 +58,9 @@ public class DashboardActivity extends AppCompatActivity {
                     case R.id.taikhoan:
                         selectedFragment = new TaiKhoanFragment();
                         break;
+
                 }
+
                 getSupportFragmentManager().beginTransaction().replace(R.id.frameHomeContainer,
                         selectedFragment).commit();
                 return true;

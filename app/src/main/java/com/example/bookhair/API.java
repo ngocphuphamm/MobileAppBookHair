@@ -1,7 +1,7 @@
 package com.example.bookhair;
 
 public class API {
-    public static final String URL= "http://172.16.61.231:4000";
+    public static final String URL= "http://192.168.1.13:4000";
     public static final String HOME = URL+ "/api";
     // finish
     public static final String LOGIN= HOME+"/login";
@@ -15,9 +15,9 @@ public class API {
     public static final String GET_LICHHEN_SAP_TOI= HOME+"/getLichHenSapToi";
     public static final String GET_LICHHEN_DA_DAT= HOME+"/getLichDaDat";
     public static final String GET_LICHHEN_DA_DUYET = HOME + "/getLichHenDaDuyet";
-
+    public static final String GET_THONGBAO= HOME+"/getThongBao";
     // tam thoi xong fix cái này nếu có nhân viên có lịch giờ đó thì bỏ đi ko hiển thị
     public static final String GET_NHANVIEN_BY_SALON= HOME+"/getNhanVienBySalon";
     // not finish
-    public static final String GET_THONGBAO= HOME+"/getThongBao";
+    public static final String GET_INFO_SALON= HOME+"/getInfoSalon";
 }

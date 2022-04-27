@@ -44,8 +44,8 @@ public class ShowDetailSalonActivity extends AppCompatActivity {
         nameSalon = findViewById(R.id.ten_detail_salon);
         name2 = findViewById(R.id.txtTensalon);
         diachi = findViewById(R.id.txtDiachi);
-        txtSoCho = findViewById(R.id.txtSoCho);
-        txtSoNam = findViewById(R.id.txtSoNam);
+//        txtSoCho = findViewById(R.id.txtSoCho);
+//        txtSoNam = findViewById(R.id.txtSoNam);
         txtChuTiem = findViewById(R.id.txtTenChutiem);
         txtGioiThieu = findViewById(R.id.txtGioithieu);
         btn_yeuthich = findViewById(R.id.btn_yeuthich);
@@ -59,7 +59,7 @@ public class ShowDetailSalonActivity extends AppCompatActivity {
                 startActivity(new Intent(ShowDetailSalonActivity.this, DashboardActivity.class));
             }
         });
-
+        getInFoSalon();
         btnDatLich.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -138,5 +138,55 @@ public class ShowDetailSalonActivity extends AppCompatActivity {
         });
     }
 
+
+    public void getInFoSalon(){
+        StringRequest request = new StringRequest(Request.Method.GET, API.GET_INFO_SALON+"/"+id_salon, res->{
+
+            try {
+
+                JSONObject object = new JSONObject(res);
+                if (object.getBoolean("success")) {
+                    JSONArray salonarray = new JSONArray(object.getString("salon"));
+
+                    JSONObject salonobject = salonarray.getJSONObject(0);
+                    String namesalon = salonobject.getString("tenSalon");
+                    String name2salon = salonobject.getString("tenSalon");
+                    String diaChi = salonobject.getString("diaChi");
+//                    String soCho = salonobject.getString("soChoNgoi");
+//                    String soNam = salonobject.getString("soNamThanhLap");
+                    String imageSalon = salonobject.getString("hinhAnh");
+                    String chuTiem = salonobject.getString("chuTiem");
+                    String gioiThieu = salonobject.getString("gioiThieu");
+//                    Boolean selfLove = salonobject.getBoolean("selfLove");
+                    nameSalon.setText(namesalon);
+                    name2.setText(name2salon);
+                    diachi.setText(diaChi);
+//                    txtSoCho.setText(soCho);
+//                    txtSoNam.setText(soNam);
+                    txtChuTiem.setText(chuTiem);
+                    txtGioiThieu.setText(gioiThieu);
+                    Picasso.get().load(API.URL + "/storage/salon/" + imageSalon).into(image);
+//                    btn_yeuthich.setImageResource(
+//                            selfLove ? R.drawable.ic_baseline_favorite_red : R.drawable.ic_baseline_favorite_24
+//                    );
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }, error -> {
+            error.printStackTrace();
+        }){
+            @Override
+            public Map<String, String> getParams() throws AuthFailureError {
+                String token = userPref.getString("token", "");
+                HashMap<String,String> map = new HashMap<>();
+                map.put("Authorization","Bearer "+token);
+                map.put("id", id_salon+"");
+                return map;
+            }
+        };
+        RequestQueue queue = Volley.newRequestQueue(this);
+        queue.add(request);
+    }
 
 }

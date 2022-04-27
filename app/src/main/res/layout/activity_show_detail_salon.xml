@@ -74,48 +74,7 @@
                 android:layout_marginLeft="23dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/border_right"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/labelThanhlap"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Thành lập"
-                    android:paddingRight="5dp"
-                    />
-
-
-                <TextView
-                    android:id="@+id/txtSoNam"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingRight="5dp"
-                    android:text="5 Năm" />
-            </LinearLayout>
-            <LinearLayout
-
-                android:layout_width="95dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="23dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/border_right"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/labelNhanVien"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nhân Viên"
-                    android:paddingRight="5dp"
-                    />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingRight="5dp"
-                    android:text="5 Người" />
-            </LinearLayout>
+                android:orientation="vertical"/>
             <LinearLayout
 
                 android:layout_width="95dp"
@@ -123,14 +82,6 @@
                 android:layout_marginLeft="23dp"
                 android:layout_marginTop="5dp"
                 android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/labelChongoi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Số chỗ ngồi"
-                    android:paddingRight="5dp"
-                    />
 
 
                 <TextView
@@ -138,7 +89,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingRight="5dp"
-                    android:text="20 chỗ" />
+                    android:text="" />
             </LinearLayout>
         </LinearLayout>
         <LinearLayout

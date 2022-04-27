@@ -1,14 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.LichFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.LichFragment"
+    android:background="@drawable/radius_back">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/lnlLichHen"
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:background="@drawable/line_buttom">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="21dp"
+            android:text="Lịch hẹn của bạn"
+            android:fontFamily="@font/leckerlione_regular"
+            android:textColor="@color/blue_main"
+            android:textSize="40sp" />
+    </LinearLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:background="@drawable/radius_back"
+        android:layout_below="@id/lnlLichHen"
+        app:tabGravity="start"
+        android:id="@+id/tab_layout"
+        android:layout_width="wrap_content"
+        android:paddingLeft="10dp"
+        android:layout_height="wrap_content"
+        app:tabSelectedTextColor="#000"
+        app:tabTextColor="#000"
+        app:tabIndicatorColor="#1294F2"
+        app:tabIndicatorFullWidth="false"
+        app:layout_constraintVertical_bias="0"
+
+        />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_page2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_below="@id/tab_layout"
+        android:background="@drawable/radius_back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0" />
 
-</FrameLayout>
+</RelativeLayout>

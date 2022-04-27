@@ -3,13 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/radius_back"
-    tools:context=".fragment.SapToiFragment"
-    >
+    tools:context=".fragment.DaDuyetFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <ListView
-        android:id="@+id/lvThongBaoSapToi"
+        android:id="@+id/lvDaDuyet"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/radius_back"

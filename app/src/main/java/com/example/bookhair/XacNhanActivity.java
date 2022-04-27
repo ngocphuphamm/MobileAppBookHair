@@ -23,7 +23,9 @@ import com.android.volley.toolbox.Volley;
 import com.example.bookhair.Class.NhanVienItemSpinner;
 import com.example.bookhair.Class.SalonNoti;
 import com.example.bookhair.adapter.NhanVienSpinnerAdapter;
+import com.example.bookhair.fragment.HomeFragment;
 import com.example.bookhair.fragment.SapToiFragment;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -104,12 +106,10 @@ public class XacNhanActivity extends AppCompatActivity {
                         salonNoti.setTenSalon(salonobject.getString("tenSalon"));
 
 //                         SapToiFragment.arraySalonNoti.add(0, salonNoti);
-//                        SapToiFragment.lvThongBaoSapToi.getAdapter().notifyItemInserted(0);
-//                        SapToiFragment.lvThongBaoSapToi.getAdapter().notifyDataSetChanged();
-                        Toast.makeText(this, "Đặt lịch thành thông", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(XacNhanActivity.this, DashboardActivity.class);
-                        intent.putExtra("message", 2);
-                        startActivity(intent);
+                         // SapToiFragment.lvThongBaoSapToi.getAdapter().notifyItemInserted(0);
+                        //SapToiFragment.lvThongBaoSapToi.getAdapter().notifyDataSetChanged();
+
+
 
                     }
                     else
@@ -151,7 +151,10 @@ public class XacNhanActivity extends AppCompatActivity {
             };
             RequestQueue queue = Volley.newRequestQueue(this);
             queue.add(request);
-
+            Toast.makeText(this, "Đặt lịch thành thông", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(XacNhanActivity.this, DashboardActivity.class);
+            intent.putExtra("message", 2);
+            startActivity(intent);
 
         });
     }

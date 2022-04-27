@@ -97,7 +97,8 @@ public class LichSuFragment extends Fragment {
 
     public void mapping(){
         arraySalonNoti = new ArrayList<>();
-        StringRequest request = new StringRequest(Request.Method.GET, API.GET_LICHHEN_DA_DAT, response -> {
+        String user = userPref.getString("userId","");
+        StringRequest request = new StringRequest(Request.Method.GET, API.GET_LICHHEN_DA_DAT+"/"+user, response -> {
 
             try {
                 JSONObject object = new JSONObject(response);

@@ -17,5 +17,6 @@ public class API {
     // not finish
     public static final String GET_LICHHEN_SAP_TOI= HOME+"/getLichHenSapToi";
     public static final String GET_LICHHEN_DA_DAT= HOME+"/getLichDaDat";
+    public static final String GET_LICHHEN_DA_DUYET = HOME + "/getLichHenDaDuyet";
 
 }

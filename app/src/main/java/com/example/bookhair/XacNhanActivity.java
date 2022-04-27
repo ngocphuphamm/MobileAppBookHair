@@ -105,7 +105,7 @@ public class XacNhanActivity extends AppCompatActivity {
                         salonNoti.setNhanVienCatToc(nhanvienobject.getString("hoTen"));
                         salonNoti.setTenSalon(salonobject.getString("tenSalon"));
 
-                         SapToiFragment.arraySalonNoti.add(0, salonNoti);
+//                         SapToiFragment.arraySalonNoti.add(0, salonNoti);
                          // SapToiFragment.lvThongBaoSapToi.getAdapter().notifyItemInserted(0);
                         //SapToiFragment.lvThongBaoSapToi.getAdapter().notifyDataSetChanged();
 

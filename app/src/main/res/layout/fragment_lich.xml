@@ -23,7 +23,7 @@
             android:layout_marginStart="60dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="21dp"
-            android:text="Lịch cắt của bạn"
+            android:text="Lịch hẹn của bạn"
             android:fontFamily="@font/leckerlione_regular"
             android:textColor="@color/blue_main"
             android:textSize="40sp" />

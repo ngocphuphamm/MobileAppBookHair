@@ -10,16 +10,19 @@
         <entry key="..\:/Users/ngocp/AndroidStudioProjects/BookHair/app/src/main/res/layout/activity_dashboard.xml" value="0.10144927536231885" />
         <entry key="..\:/Users/ngocp/AndroidStudioProjects/BookHair/app/src/main/res/layout/activity_dat_lich.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/ngocp/AndroidStudioProjects/BookHair/app/src/main/res/layout/activity_dat_lich_dvactivity.xml" value="0.11770833333333333" />
+        <entry key="..\:/Users/ngocp/AndroidStudioProjects/BookHair/app/src/main/res/layout/activity_edit_user_info.xml" value="0.14764492753623187" />
         <entry key="..\:/Users/ngocp/AndroidStudioProjects/BookHair/app/src/main/res/layout/activity_login.xml" value="0.13333333333333333" />
         <entry key="..\:/Users/ngocp/AndroidStudioProjects/BookHair/app/src/main/res/layout/activity_main.xml" value="0.10144927536231885" />
         <entry key="..\:/Users/ngocp/AndroidStudioProjects/BookHair/app/src/main/res/layout/activity_on_board.xml" value="0.22" />
         <entry key="..\:/Users/ngocp/AndroidStudioProjects/BookHair/app/src/main/res/layout/activity_show_detail_salon.xml" value="0.22" />
+        <entry key="..\:/Users/ngocp/AndroidStudioProjects/BookHair/app/src/main/res/layout/activity_user_info.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/ngocp/AndroidStudioProjects/BookHair/app/src/main/res/layout/activity_xac_nhan.xml" value="0.13496376811594202" />
         <entry key="..\:/Users/ngocp/AndroidStudioProjects/BookHair/app/src/main/res/layout/content_xac_nhan.xml" value="0.13496376811594202" />
         <entry key="..\:/Users/ngocp/AndroidStudioProjects/BookHair/app/src/main/res/layout/dichvu_spinner_row.xml" value="0.6" />
         <entry key="..\:/Users/ngocp/AndroidStudioProjects/BookHair/app/src/main/res/layout/dvnoibat_view.xml" value="0.4466666666666667" />
         <entry key="..\:/Users/ngocp/AndroidStudioProjects/BookHair/app/src/main/res/layout/fragment_da_duyet.xml" value="0.125" />
         <entry key="..\:/Users/ngocp/AndroidStudioProjects/BookHair/app/src/main/res/layout/fragment_first.xml" value="0.1" />
+        <entry key="..\:/Users/ngocp/AndroidStudioProjects/BookHair/app/src/main/res/layout/fragment_first2.xml" value="0.1" />
         <entry key="..\:/Users/ngocp/AndroidStudioProjects/BookHair/app/src/main/res/layout/fragment_home.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/ngocp/AndroidStudioProjects/BookHair/app/src/main/res/layout/fragment_lich.xml" value="0.1" />
         <entry key="..\:/Users/ngocp/AndroidStudioProjects/BookHair/app/src/main/res/layout/fragment_lich_su.xml" value="0.11639492753623189" />
@@ -27,6 +30,7 @@
         <entry key="..\:/Users/ngocp/AndroidStudioProjects/BookHair/app/src/main/res/layout/fragment_sap_toi.xml" value="0.1" />
         <entry key="..\:/Users/ngocp/AndroidStudioProjects/BookHair/app/src/main/res/layout/fragment_second.xml" value="0.13496376811594202" />
         <entry key="..\:/Users/ngocp/AndroidStudioProjects/BookHair/app/src/main/res/layout/fragment_signup.xml" value="0.10144927536231885" />
+        <entry key="..\:/Users/ngocp/AndroidStudioProjects/BookHair/app/src/main/res/layout/fragment_tai_khoan.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/ngocp/AndroidStudioProjects/BookHair/app/src/main/res/layout/fragment_thong_bao.xml" value="0.1" />
         <entry key="..\:/Users/ngocp/AndroidStudioProjects/BookHair/app/src/main/res/layout/item_slider_home.xml" value="0.24363636363636362" />
         <entry key="..\:/Users/ngocp/AndroidStudioProjects/BookHair/app/src/main/res/layout/lichhensaptoi_view.xml" value="0.1" />

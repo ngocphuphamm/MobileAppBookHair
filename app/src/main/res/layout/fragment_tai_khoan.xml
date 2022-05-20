@@ -1,14 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".fragment.TaiKhoanFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
+        android:id="@+id/rlProfile"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@drawable/line_buttom">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageOfUserName"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:padding="10dp"
+            android:src="@drawable/cat" />
+
+        <TextView
+            android:id="@+id/tvUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@id/imageOfUserName"
+            android:fontFamily="@font/roboto_medium"
+
+            android:text="Pay Together"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvNumberPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvUserName"
+            android:layout_toRightOf="@id/imageOfUserName"
+            android:fontFamily="@font/roboto_medium"
+            android:text="+841234567"
+            android:textColor="#0D0000"
+            android:textSize="13sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlLayoutYeuThich"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/rlProfile"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tvYeuThich"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Yêu thích"
+            android:textColor="#000"
+            android:textSize="15dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlDiaChi"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/rlLayoutYeuThich"
+        android:background="#F0EFF4">
+
+        <TextView
+            android:id="@+id/tvDiaChi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Địa chỉ"
+            android:textColor="#000"
+            android:textSize="15dp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rlDiaChiCuaUser"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@id/rlDiaChi"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tvDiaChiUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Đường 02 Thanh Sơn, Thanh Bình, Hải Châu , Đà Nẵng"
+            android:textColor="#000"
+            android:textSize="15dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlViTri"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/rlDiaChiCuaUser"
+        android:background="#F0EFF4">
+
+        <TextView
+            android:id="@+id/tvVitri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Vị Trí"
+            android:textColor="#000"
+            android:textSize="15dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlDangXuat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_below="@id/rlViTri">
 
-</FrameLayout>
+        <Button
+            android:id="@+id/btn_dangxuat"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
+
+            android:background="@drawable/button_bg"
+            android:text="Đăng xuất"
+            android:textColor="@color/white" />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

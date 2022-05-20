@@ -34,7 +34,7 @@ public class ShowDetailSalonActivity extends AppCompatActivity {
     private ImageButton btn_yeuthich, btn_home;
     private SharedPreferences userPref;
     private int id_salon = 0;
-    private String  userId ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

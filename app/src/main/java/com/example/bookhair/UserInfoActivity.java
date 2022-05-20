@@ -137,19 +137,12 @@ public class UserInfoActivity extends AppCompatActivity {
         String lastname = txtLastName.getText().toString().trim();
         String phone = txtPhone.getText().toString().trim();
         String address = txtAddress.getText().toString().trim();
-        StringRequest request = new StringRequest(Request.Method.POST, API.SAVE_USER_INFO, response -> {
+        StringRequest request = new StringRequest(Request.Method.POST, API.SAVE_USER_INFO_REGISTER, response -> {
             try {
                 JSONObject object = new JSONObject(response);
                 if (object.getBoolean("success")){
-                    JSONObject userObject = object.getJSONObject("user");
-                    SharedPreferences.Editor editor = userPref.edit();
-                    editor.putString("name", userObject.getString("name"));
-                    editor.putString("lastname", userObject.getString("lastname"));
-                    editor.putString("photo", object.getString("photo"));
-                    editor.putString("phone", phone);
-                    editor.putString("address", address);
-                    editor.apply();
-                    startActivity(new Intent(UserInfoActivity.this, DashboardActivity.class));
+
+                    startActivity(new Intent(UserInfoActivity.this, LoginActivity.class));
                     finish();
                 }
             } catch (JSONException e) {

@@ -23,6 +23,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".TimKiemActivity"
+            android:exported="true" />
+        <activity
             android:name=".EditUserInfoActivity"
             android:exported="true" />
         <activity

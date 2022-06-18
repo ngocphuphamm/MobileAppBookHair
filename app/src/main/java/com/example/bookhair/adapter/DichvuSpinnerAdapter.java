@@ -52,7 +52,7 @@ public class DichvuSpinnerAdapter extends ArrayAdapter<DichvuItemSpinner> {
             tenDV.setText(currentItem.getTenDichvu());
             thoiGian.setText(String.valueOf(currentItem.getThoigian()+ " phút"));
             gia.setText(String.valueOf(giafm+ " VNĐ"));
-            Picasso.get().load(API.URL + "/storage/salon/" + currentItem.getHinhAnh()).into(imageView);
+            Picasso.get().load(API.URL + "/storage/dichvu/" + currentItem.getHinhAnh()).into(imageView);
 
         }
         return convertView;

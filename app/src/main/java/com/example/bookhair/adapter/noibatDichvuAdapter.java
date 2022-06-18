@@ -44,7 +44,7 @@ public class noibatDichvuAdapter extends RecyclerView.Adapter<noibatDichvuAdapte
     @Override
     public void onBindViewHolder(@NonNull noibatDvViewHolder holder, int position) {
         Dichvu dichvu = listDichvus.get(position);
-        Picasso.get().load(API.URL+"/storage/salon/"+dichvu.getImage()).into(holder.imageDv);
+        Picasso.get().load(API.URL+"/storage/dichvu/"+dichvu.getImage()).into(holder.imageDv);
         holder.tenDV.setText(dichvu.getTendv());
 
         DecimalFormat formatter = new DecimalFormat("###,###,###");

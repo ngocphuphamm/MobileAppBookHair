@@ -31,6 +31,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class DatLichActivity extends AppCompatActivity {
     private ArrayList<DichvuItemSpinner> dichvuLists;
@@ -57,14 +58,14 @@ public class DatLichActivity extends AppCompatActivity {
 
         Button btnTieptuc = findViewById(R.id.btn_tieptuc);
         calendarView = findViewById(R.id.calendar);
+        Calendar calendar = Calendar.getInstance();
+        calendarView.setMinDate(calendarView.getDate());
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
-            public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
-                int month  = i1 + 1 ;
+                public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
 
 
-
-
+                     int month  = i1 + 1 ;
                     textViewHidden.setText( i + "-" + month+ "-" + i2);
 
 
@@ -163,4 +164,5 @@ public class DatLichActivity extends AppCompatActivity {
         queue.add(request);
 
     }
+
 }

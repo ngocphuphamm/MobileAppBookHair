@@ -23,6 +23,20 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".TimKiemActivity"
+            android:exported="true" />
+        <activity
+            android:name=".EditUserInfoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".YeuThichActivity"
+            android:exported="true" />
+        <activity
+            android:name=".UserInfoActivity"
+            android:exported="true"
+            android:label="@string/title_activity_user_info"
+            android:theme="@style/Theme.BookHair.NoActionBar" />
+        <activity
             android:name=".DatLichDVActivity"
             android:exported="true" />
         <activity

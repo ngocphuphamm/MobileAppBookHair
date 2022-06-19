@@ -161,7 +161,7 @@ public class XacNhanActivity extends AppCompatActivity {
 
     private void initNhanVienList() {
         nhanVienLists = new ArrayList<>();
-        StringRequest request = new StringRequest(Request.Method.GET, API.GET_NHANVIEN_BY_SALON + "/" + getIntent().getStringExtra("gio") + "," + id_salon + "," + id_dichvu, response -> {
+        StringRequest request = new StringRequest(Request.Method.GET, API.GET_NHANVIEN_BY_SALON + "/" +  getIntent().getStringExtra("ngayDat") +","+ getIntent().getStringExtra("gio") + "," + id_salon + "," + id_dichvu, response -> {
 
             try {
                 JSONObject object = new JSONObject(response);

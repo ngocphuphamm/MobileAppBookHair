@@ -13,8 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:background="@drawable/radius_back"
-        />
+        android:background="@drawable/radius_back" />
 
     <LinearLayout
         android:id="@+id/linearChonTG"

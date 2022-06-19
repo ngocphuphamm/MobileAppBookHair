@@ -44,15 +44,15 @@ public class noibatDichvuAdapter extends RecyclerView.Adapter<noibatDichvuAdapte
     @Override
     public void onBindViewHolder(@NonNull noibatDvViewHolder holder, int position) {
         Dichvu dichvu = listDichvus.get(position);
-        Picasso.get().load(API.URL+"/storage/salon/"+dichvu.getImage()).into(holder.imageDv);
+        Picasso.get().load(API.URL+"/storage/dichvu/"+dichvu.getImage()).into(holder.imageDv);
         holder.tenDV.setText(dichvu.getTendv());
 
         DecimalFormat formatter = new DecimalFormat("###,###,###");
         Double so = Double.parseDouble(dichvu.getGia());
         String moneyString = formatter.format(so);
         /// CHƯA XÁC ĐINH
-        holder.gia.setText(moneyString+"VND");
-        holder.gia.setText(dichvu.getGia() + "VND");
+        holder.gia.setText(moneyString+" VND");
+        holder.gia.setText(dichvu.getGia() + " VND");
         holder.tenSalon.setText(dichvu.getTensalon());
         holder.dvnoibatrelative.setOnClickListener(new View.OnClickListener() {
             @Override

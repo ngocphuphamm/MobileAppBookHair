@@ -25,6 +25,7 @@ import com.example.bookhair.Class.Dichvu;
 import com.example.bookhair.Class.Salon;
 import com.example.bookhair.Class.SalonhelperFeature;
 import com.example.bookhair.R;
+import com.example.bookhair.TimKiemActivity;
 import com.example.bookhair.adapter.SalonAdapter;
 import com.example.bookhair.adapter.noibatDichvuAdapter;
 import com.example.bookhair.adapter.noibatSalonAdapter;
@@ -117,8 +118,8 @@ public class HomeFragment extends Fragment {
         lntimkiem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(getContext(), TimKiemActivity.class);
-//                startActivity(intent);
+                Intent intent = new Intent(getContext(), TimKiemActivity.class);
+                startActivity(intent);
             }
         });
         setupSalonsViewPager();

@@ -1,14 +1,39 @@
 package com.example.bookhair.fragment;
 
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.bookhair.API;
+import com.example.bookhair.DatLichActivity;
+import com.example.bookhair.LoginActivity;
 import com.example.bookhair.R;
+import com.example.bookhair.UserInfoActivity;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,7 +41,11 @@ import com.example.bookhair.R;
  * create an instance of this fragment.
  */
 public class SignupFragment extends Fragment {
-
+    private View view;
+    private EditText txtEmail, txtPassword;
+    private Button btn_signup;
+    private ProgressDialog dialog;
+    private Context context;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -61,6 +90,117 @@ public class SignupFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_signup, container, false);
+        view = inflater.inflate(R.layout.fragment_signup, container, false);
+        context = view.getContext();
+        init();
+        return view ;
+    }
+
+    private void init() {
+        txtEmail = view.findViewById(R.id.email);
+        txtPassword = view.findViewById(R.id.pass);
+        btn_signup = view.findViewById(R.id.btn_signup);
+        dialog = new ProgressDialog(getContext());
+        dialog.setCancelable(false);
+        btn_signup.setOnClickListener(v->{
+            if(TextUtils.isEmpty(txtEmail.getText().toString()))
+            {
+                Toast.makeText(getActivity(),
+                        "Vui lòng khách hàng không để trống!",
+                        Toast.LENGTH_SHORT).show();
+            }
+            else if(TextUtils.isEmpty(txtPassword.getText().toString())){
+                Toast.makeText(getActivity(),
+                        "Vui lòng khách hàng không để trống!",
+                        Toast.LENGTH_SHORT).show();
+            }
+            else if(!isValidEmailAddress(txtEmail.getText().toString()))
+            {
+                Toast.makeText(getActivity(),
+                        "Vui lòng khách hàng điền đúng địa chỉ email!",
+                        Toast.LENGTH_SHORT).show();
+            }
+            else if(!isValid(txtPassword.getText().toString()))
+            {
+                Toast.makeText(getActivity(),
+                        "Vui lòng khách hàng điền mật khẩu có ký tự đặc biệt,in hoa và độ dài 8-20",
+                        Toast.LENGTH_SHORT).show();
+            }
+            else
+            {
+                register();
+            }
+
+        });
+    }
+    public boolean isValidEmailAddress(String email) {
+        String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
+        java.util.regex.Matcher m = p.matcher(email);
+        return m.matches();
+    }
+
+    // digit + lowercase char + uppercase char + punctuation + symbol
+    private static final String PASSWORD_PATTERN =
+            "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$";
+
+    private static final Pattern pattern = Pattern.compile(PASSWORD_PATTERN);
+
+    public static boolean isValid(final String password) {
+        Matcher matcher = pattern.matcher(password);
+        return matcher.matches();
+    }
+    private void register() {
+        dialog.setMessage("Đang đăng ký...");
+        dialog.show();
+        StringRequest request = new StringRequest(Request.Method.POST, API.REGISTER, response -> {
+            //get response if connection success
+            try {
+                JSONObject object = new JSONObject(response);
+                if (object.getBoolean("success")){
+                    JSONObject user = object.getJSONObject("user");
+                    // make share preference user
+                    SharedPreferences userPref = getActivity().getApplicationContext().getSharedPreferences("user",getContext().MODE_PRIVATE);
+                    SharedPreferences.Editor editor = userPref.edit();
+                    editor.putString("token", object.getString("token"));
+                    editor.putString("name", user.getString("name"));
+                    editor.putString("lastname", user.getString("lastname"));
+                    editor.putString("photo", user.getString("photo"));
+                    editor.putString("phone", user.getString("phone"));
+                    editor.putString("address", user.getString("address"));
+                    editor.putBoolean("isLoggedIn", true);
+                    editor.apply();
+                    // if Success
+                    startActivity(new Intent(getContext(), UserInfoActivity.class));
+                    ( (LoginActivity)getContext()).finish();
+                    Toast.makeText(getContext(), "Đăng ký thành công", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(getContext(), "Tài khoản đã được đăng ký ", Toast.LENGTH_SHORT).show();
+
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            dialog.dismiss();
+        }, error -> {
+            // error if connection not success
+            error.printStackTrace();
+            dialog.dismiss();
+        }){
+            // add parameters
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("email", txtEmail.getText().toString().trim());
+                map.put("password", txtPassword.getText().toString());
+                return map;
+            }
+        };
+        // add request to RequestQueue
+        RequestQueue queue = Volley.newRequestQueue(getContext());
+        queue.add(request);
     }
 }

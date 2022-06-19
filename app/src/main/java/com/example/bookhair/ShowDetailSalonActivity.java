@@ -34,7 +34,7 @@ public class ShowDetailSalonActivity extends AppCompatActivity {
     private ImageButton btn_yeuthich, btn_home;
     private SharedPreferences userPref;
     private int id_salon = 0;
-    private String  userId ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,12 +70,11 @@ public class ShowDetailSalonActivity extends AppCompatActivity {
         });
 
         btn_yeuthich.setOnClickListener(v->{
-            String user = userPref.getString("userId","");
             StringRequest request = new StringRequest(Request.Method.POST, API.YEU_THICH, response -> {
                 try {
                     JSONObject object = new JSONObject(response);
                     if (object.getBoolean("success")){
-                        StringRequest request2 = new StringRequest(Request.Method.GET, API.GET_SALON_BY_ID+"/"+user, res->{
+                        StringRequest request2 = new StringRequest(Request.Method.GET, API.GET_SALON_BY_ID+"/"+id_salon, res->{
 
                             try {
 
@@ -146,8 +145,8 @@ public class ShowDetailSalonActivity extends AppCompatActivity {
 
                 JSONObject object = new JSONObject(res);
                 if (object.getBoolean("success")) {
+                    Boolean selfLove = object.getBoolean("selfLove");
                     JSONArray salonarray = new JSONArray(object.getString("salon"));
-
                     JSONObject salonobject = salonarray.getJSONObject(0);
                     String namesalon = salonobject.getString("tenSalon");
                     String name2salon = salonobject.getString("tenSalon");
@@ -157,7 +156,7 @@ public class ShowDetailSalonActivity extends AppCompatActivity {
                     String imageSalon = salonobject.getString("hinhAnh");
                     String chuTiem = salonobject.getString("chuTiem");
                     String gioiThieu = salonobject.getString("gioiThieu");
-//                    Boolean selfLove = salonobject.getBoolean("selfLove");
+
                     nameSalon.setText(namesalon);
                     name2.setText(name2salon);
                     diachi.setText(diaChi);
@@ -166,9 +165,9 @@ public class ShowDetailSalonActivity extends AppCompatActivity {
                     txtChuTiem.setText(chuTiem);
                     txtGioiThieu.setText(gioiThieu);
                     Picasso.get().load(API.URL + "/storage/salon/" + imageSalon).into(image);
-//                    btn_yeuthich.setImageResource(
-//                            selfLove ? R.drawable.ic_baseline_favorite_red : R.drawable.ic_baseline_favorite_24
-//                    );
+                    btn_yeuthich.setImageResource(
+                            selfLove ? R.drawable.ic_baseline_favorite_red : R.drawable.ic_baseline_favorite_24
+                    );
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -177,11 +176,10 @@ public class ShowDetailSalonActivity extends AppCompatActivity {
             error.printStackTrace();
         }){
             @Override
-            public Map<String, String> getParams() throws AuthFailureError {
+            public Map<String, String> getHeaders() throws AuthFailureError {
                 String token = userPref.getString("token", "");
                 HashMap<String,String> map = new HashMap<>();
                 map.put("Authorization","Bearer "+token);
-                map.put("id", id_salon+"");
                 return map;
             }
         };

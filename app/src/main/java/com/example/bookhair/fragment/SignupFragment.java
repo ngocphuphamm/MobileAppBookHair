@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.bookhair.API;
+import com.example.bookhair.DatLichActivity;
 import com.example.bookhair.LoginActivity;
 import com.example.bookhair.R;
 import com.example.bookhair.UserInfoActivity;
@@ -30,6 +32,8 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -99,10 +103,53 @@ public class SignupFragment extends Fragment {
         dialog = new ProgressDialog(getContext());
         dialog.setCancelable(false);
         btn_signup.setOnClickListener(v->{
-            register();
+            if(TextUtils.isEmpty(txtEmail.getText().toString()))
+            {
+                Toast.makeText(getActivity(),
+                        "Vui lòng khách hàng không để trống!",
+                        Toast.LENGTH_SHORT).show();
+            }
+            else if(TextUtils.isEmpty(txtPassword.getText().toString())){
+                Toast.makeText(getActivity(),
+                        "Vui lòng khách hàng không để trống!",
+                        Toast.LENGTH_SHORT).show();
+            }
+            else if(!isValidEmailAddress(txtEmail.getText().toString()))
+            {
+                Toast.makeText(getActivity(),
+                        "Vui lòng khách hàng điền đúng địa chỉ email!",
+                        Toast.LENGTH_SHORT).show();
+            }
+            else if(!isValid(txtPassword.getText().toString()))
+            {
+                Toast.makeText(getActivity(),
+                        "Vui lòng khách hàng điền mật khẩu có ký tự đặc biệt,in hoa và độ dài 8-20",
+                        Toast.LENGTH_SHORT).show();
+            }
+            else
+            {
+                register();
+            }
+
         });
     }
+    public boolean isValidEmailAddress(String email) {
+        String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
+        java.util.regex.Matcher m = p.matcher(email);
+        return m.matches();
+    }
 
+    // digit + lowercase char + uppercase char + punctuation + symbol
+    private static final String PASSWORD_PATTERN =
+            "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$";
+
+    private static final Pattern pattern = Pattern.compile(PASSWORD_PATTERN);
+
+    public static boolean isValid(final String password) {
+        Matcher matcher = pattern.matcher(password);
+        return matcher.matches();
+    }
     private void register() {
         dialog.setMessage("Đang đăng ký...");
         dialog.show();

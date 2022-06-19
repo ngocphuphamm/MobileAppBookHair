@@ -51,7 +51,7 @@ public class DichvuSpinnerAdapter extends ArrayAdapter<DichvuItemSpinner> {
             String giafm = formatter.format(currentItem.getGia());
             tenDV.setText(currentItem.getTenDichvu());
             thoiGian.setText(String.valueOf(currentItem.getThoigian()+ " phút"));
-            gia.setText(String.valueOf(giafm+ " VNĐ"));
+            gia.setText(String.valueOf(giafm+ ",000 VNĐ"));
             Picasso.get().load(API.URL + "/storage/dichvu/" + currentItem.getHinhAnh()).into(imageView);
 
         }

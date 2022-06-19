@@ -35,10 +35,13 @@ public class DatLichDVActivity extends AppCompatActivity {
         Button btnTieptuc = findViewById(R.id.btn_tieptucCTDV);
 
         calendarView = findViewById(R.id.calendarCTDV);
+        calendarView.setMinDate(calendarView.getDate());
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
-                ngayHen =  i + "-" +i1+1+ "-" + i2;
+
+                int month  = i1 + 1 ;
+                ngayHen =  i + "-" +month+ "-" + i2;
             }
         });
         radioGroupTime = findViewById(R.id.radioGrTimeCTDV);

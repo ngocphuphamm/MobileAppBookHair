@@ -14,7 +14,7 @@ public class API {
     // DICHVU
     public static final String GET_DICHVU= HOME+"/dichvu/getDichvu";
     public static final String GET_DICHVU_BY_SALON= HOME+"/dichvu/getDichVuBySalon";
-
+    public static final String GET_INFO_CTDV= HOME+"/dichvu/getChiTietDV";
     // YEUTHICH
     public static final String YEU_THICH= HOME+"/yeuthich/YeuThich";
     public static final String GET_LIST_YEUTHICH= HOME+"/yeuthich/getListYeuThich";

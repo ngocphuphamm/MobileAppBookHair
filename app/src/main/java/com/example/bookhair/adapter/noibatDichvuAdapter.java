@@ -51,8 +51,8 @@ public class noibatDichvuAdapter extends RecyclerView.Adapter<noibatDichvuAdapte
         Double so = Double.parseDouble(dichvu.getGia());
         String moneyString = formatter.format(so);
         /// CHƯA XÁC ĐINH
-        holder.gia.setText(moneyString+"VND");
-        holder.gia.setText(dichvu.getGia() + "VND");
+        holder.gia.setText(moneyString+" VND");
+        holder.gia.setText(dichvu.getGia() + " VND");
         holder.tenSalon.setText(dichvu.getTensalon());
         holder.dvnoibatrelative.setOnClickListener(new View.OnClickListener() {
             @Override

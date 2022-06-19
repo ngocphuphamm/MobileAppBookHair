@@ -33,6 +33,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -81,7 +83,24 @@ public class EditUserInfoActivity extends AppCompatActivity {
         });
         btn_save.setOnClickListener(v->{
             if (validate()){
-                updateProfile();
+                if(!isValidUsername(txtName.getText().toString()))
+                {
+                    Toast.makeText(getApplication().getBaseContext(), " Tên Họ Sai", Toast.LENGTH_SHORT).show();
+                }
+                if(!isValidUsername(txtLastName.getText().toString()))
+                {
+                    Toast.makeText(getApplication().getBaseContext(), " Tên  Sai", Toast.LENGTH_SHORT).show();
+
+                }
+                if(!isValidMobileNo(txtPhone.getText().toString()))
+                {
+                    Toast.makeText(getApplication().getBaseContext(), " Số Điện Thoại Sai", Toast.LENGTH_SHORT).show();
+                }
+                else if(isValidUsername(txtName.getText().toString()) && isValidUsername(txtLastName.getText().toString()) && isValidMobileNo(txtPhone.getText().toString()) )
+                {
+                    updateProfile();
+                }
+
             }
         });
     }
@@ -164,12 +183,40 @@ public class EditUserInfoActivity extends AppCompatActivity {
             return false;
         }
         if (txtAddress.getText().toString().isEmpty()){
-            layoutAddress.setErrorEnabled(true);
+            layoutName.setErrorEnabled(true);
             layoutAddress.setError("Địa chỉ không được để trống");
             return false;
         }
 
         return true;
+    }
+    public static boolean isValidMobileNo(String s)
+    {
+        // The given argument to compile() method
+        // is regular expression. With the help of
+        // regular expression we can validate mobile
+        // number.
+        // The number should be of 10 digits.
+
+        // Creating a Pattern class object
+        Pattern p = Pattern.compile("^\\d{10}$");
+
+        // Pattern class contains matcher() method
+        // to find matching between given number
+        // and regular expression for which
+        // object of Matcher class is created
+        Matcher m = p.matcher(s);
+
+        // Returning boolean value
+        return (m.matches());
+    }
+    public static boolean isValidUsername(String txt)
+    {
+
+        String regx = "^[\\p{L} .'-]+$";
+        Pattern pattern = Pattern.compile(regx,Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(txt);
+        return matcher.find();
     }
     private String bitmapToString(Bitmap bitmap) {
         if (bitmap != null){

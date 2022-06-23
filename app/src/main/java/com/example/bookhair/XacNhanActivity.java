@@ -292,7 +292,7 @@ public class XacNhanActivity extends AppCompatActivity {
                 } else if(data.getIntExtra("status", -1) == 1) {
                     //TOKEN FAIL
                     String message = data.getStringExtra("message") != null?data.getStringExtra("message"):"Thất bại";
-                    Log.d("Thanh Cong","Khong thanh cong");;
+                    Log.d("Thanh Cong","Khong thanh cong");
 
                 } else if(data.getIntExtra("status", -1) == 2) {
                     //TOKEN FAIL

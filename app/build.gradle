@@ -50,8 +50,8 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
 
 
-    // google map
-
+    // momo
+    implementation 'com.github.momo-wallet:mobile-sdk:1.0.7'
 
 
     // glide

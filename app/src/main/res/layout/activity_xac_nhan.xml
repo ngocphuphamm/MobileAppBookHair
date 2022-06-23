@@ -110,4 +110,15 @@
         android:text="Xác nhận"
         app:backgroundTint="@null"
         android:textColor="@color/white" />
+    <Button
+        android:id="@+id/btn_momo"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/button_bg"
+        android:text="MOMO"
+        app:backgroundTint="@null"
+        android:textColor="@color/white" />
 </RelativeLayout>

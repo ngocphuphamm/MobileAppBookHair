@@ -19,49 +19,62 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.BookHair"
+
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
             android:name=".TimKiemActivity"
+            android:theme="@style/Theme.BookHair"
             android:exported="true" />
         <activity
             android:name=".EditUserInfoActivity"
+            android:theme="@style/Theme.BookHair"
             android:exported="true" />
         <activity
             android:name=".YeuThichActivity"
+            android:theme="@style/Theme.BookHair"
             android:exported="true" />
         <activity
             android:name=".UserInfoActivity"
+
             android:exported="true"
             android:label="@string/title_activity_user_info"
             android:theme="@style/Theme.BookHair.NoActionBar" />
         <activity
             android:name=".DatLichDVActivity"
+            android:theme="@style/Theme.BookHair"
             android:exported="true" />
         <activity
             android:name=".XacNhanActivity"
+            android:theme="@style/Theme.BookHair"
             android:exported="true" />
         <activity
             android:name=".DatLichActivity"
+            android:theme="@style/Theme.BookHair"
             android:exported="true" />
         <activity
             android:name=".ChiTietDichVuActivity"
+            android:theme="@style/Theme.BookHair"
             android:exported="true" />
         <activity
             android:name=".ShowDetailSalonActivity"
+            android:theme="@style/Theme.BookHair"
             android:exported="true" />
         <activity
             android:name=".LoginActivity"
+            android:theme="@style/Theme.BookHair"
             android:exported="true" />
         <activity
             android:name=".OnBoardActivity"
+            android:theme="@style/Theme.BookHair"
             android:exported="true" />
         <activity
             android:name=".DashboardActivity"
+            android:theme="@style/Theme.BookHair"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
+            android:theme="@style/Theme.BookHair"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

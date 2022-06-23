@@ -38,6 +38,7 @@ public class DatLichActivity extends AppCompatActivity {
     private DichvuSpinnerAdapter dichvuSpinnerAdapter;
     private Spinner spinnerDichvu;
     private int id_dichvu = 0;
+    private int giaDichVu = 0;
     CalendarView calendarView;
     RadioGroup radioGroupTime;
     private SharedPreferences userPref;
@@ -91,6 +92,7 @@ public class DatLichActivity extends AppCompatActivity {
                 String dvnhan = dichvuItemSpinner.getTenDichvu();
                 tenDV.setText(dvnhan);
                 id_dichvu = dichvuItemSpinner.getId_dichvu();
+                giaDichVu = dichvuItemSpinner.getGia();
             }
 
             @Override
@@ -120,6 +122,7 @@ public class DatLichActivity extends AppCompatActivity {
                     intent.putExtra("dichvu", tenDV.getText());
                     intent.putExtra("id_dichvu", id_dichvu);
                     intent.putExtra("id_salon", id_salon);
+                    intent.putExtra("giaDichVu", giaDichVu);
                     startActivity(intent);
                 }
 

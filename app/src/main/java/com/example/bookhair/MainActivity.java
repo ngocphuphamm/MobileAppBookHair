@@ -84,22 +84,22 @@ public class MainActivity extends AppCompatActivity {
 
     private void isFirstTime() {
         // kiểm tra chạy app lần đầu
-        SharedPreferences preferences = getApplication().getSharedPreferences("onBoard", Context.MODE_PRIVATE);
-        boolean isFirstTime = preferences.getBoolean("isFirstTime", true);
-        // set giá trị mặc định
-        if (isFirstTime){
-            SharedPreferences.Editor  editor = preferences.edit();
-            editor.putBoolean("isFirstTime", false);
-            editor.apply();
+//        SharedPreferences preferences = getApplication().getSharedPreferences("onBoard", Context.MODE_PRIVATE);
+//        boolean isFirstTime = preferences.getBoolean("isFirstTime", true);
+//        // set giá trị mặc định
+//        if (isFirstTime){
+//            SharedPreferences.Editor  editor = preferences.edit();
+//            editor.putBoolean("isFirstTime", false);
+//            editor.apply();
 
             // Bắt đầu Activity Onboard
             startActivity(new Intent(MainActivity.this, OnBoardActivity.class));
             finish();
-        }else {
-            // Bắt đầu Auth Activity
-            startActivity(new Intent(MainActivity.this, LoginActivity.class));
-            finish();
-        }
+//        }else {
+//            // Bắt đầu Auth Activity
+//            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+//            finish();
+//        }
     }
 
 }

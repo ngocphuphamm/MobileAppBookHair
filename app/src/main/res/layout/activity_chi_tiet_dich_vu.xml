@@ -70,6 +70,7 @@
       android:layout_marginTop="35dp"
       android:background="@drawable/border_blue"
       android:text="Chọn dịch vụ"
+      app:backgroundTint="@null"
       android:textAllCaps="false"
       android:textColor="@color/white" />
 

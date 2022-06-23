@@ -34,7 +34,8 @@
             android:id="@+id/linear_image_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            >
 
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/image_detail_salon"
@@ -48,14 +49,17 @@
 
             <TextView
                 android:id="@+id/ten_detail_salon"
-                android:layout_width="wrap_content"
+                android:layout_width="121dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="30dp"
                 android:fontFamily="@font/antic"
                 android:text="30Shine"
+                android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
+
+
         </LinearLayout>
 
         <LinearLayout
@@ -67,30 +71,8 @@
             android:layout_marginTop="5dp"
             >
 
-            <LinearLayout
-
-                android:layout_width="95dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="23dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/border_right"
-                android:orientation="vertical"/>
-            <LinearLayout
-
-                android:layout_width="95dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="23dp"
-                android:layout_marginTop="5dp"
-                android:orientation="vertical">
 
 
-                <TextView
-                    android:id="@+id/txtSoCho"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingRight="5dp"
-                    android:text="" />
-            </LinearLayout>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -107,6 +89,7 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:background="@drawable/bgr_button_datlich"
+                app:backgroundTint="@null"
                 />
             <ImageButton
                 android:id="@+id/btn_yeuthich"
@@ -124,7 +107,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/relative_chitietSalon"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="70dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -144,7 +127,7 @@
             <TextView
                 android:id="@+id/txtDiachi"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginLeft="20dp"
                 android:text="828 Sư Vạn Hạnh, Phường 12, Quận 10, Thành phố Hồ Chí Minh"
                 android:textColor="@color/black" />
